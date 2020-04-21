@@ -11,16 +11,14 @@ $(document).ready(function(){
 
         //Mevcut güne göre tabloları düzenleme
         let last_shared_data_date = Object.keys(confirmed)[Object.keys(confirmed).length-1];
-        // console.log(last_shared_data_date);
         let current_data_time = new Date(Date.parse(last_shared_data_date));
 
         let last_data_day = current_data_time.getDay();
         let current_day = (last_data_day) % 7;
         let last_days_of_week = [ ] ;
         for (let i=0 ; i<7 ; i++) {
-            if (i == current_day) {
-                console.log(current_day)
-                last_days_of_week[i] = days[(current_day+i) % 7] + " (Güncel)";
+            if (i === 6) {
+                last_days_of_week[i] = days[(current_day + i) % 7] + " ("+last_shared_data_date+")";
             } else {
                 last_days_of_week[i] = days[(current_day + i) % 7];
             }
@@ -32,12 +30,14 @@ $(document).ready(function(){
         for(let i=0; i<8; i++) {
             last_week_confirmed.push(confirmed[Object.keys(confirmed)[Object.keys(confirmed).length - i -1]]);
         }
+        appendStat("total_case", last_week_confirmed[0]);
         last_week_confirmed = last_week_confirmed.reverse();
 
-        for (i=0; i<7; i++) {
+        for (let i=0; i<7; i++) {
             let each_day_diff = last_week_confirmed[i+1] - last_week_confirmed[i];
             each_day_confirmed.push(each_day_diff);
         }
+        appendStat("new_case", each_day_confirmed[6]);
         last_week_confirmed.shift();
 
         //Deaths
@@ -46,12 +46,14 @@ $(document).ready(function(){
         for(let i=0; i<8; i++) {
             last_week_deaths.push(deaths[Object.keys(deaths)[Object.keys(deaths).length - i -1]]);
         }
+        appendStat("total_deaths", last_week_deaths[0]);
         last_week_deaths = last_week_deaths.reverse();
 
-        for (i=0; i<7; i++) {
+        for (let i=0; i<7; i++) {
             let each_day_diff = last_week_deaths[i+1] - last_week_deaths[i];
             each_day_deaths.push(each_day_diff);
         }
+        appendStat("new_deaths", each_day_deaths[6]);
         last_week_deaths.shift();
 
         //Recovered
@@ -60,12 +62,14 @@ $(document).ready(function(){
         for(let i=0; i<8; i++) {
             last_week_recovered.push(recovered[Object.keys(recovered)[Object.keys(recovered).length - i -1]]);
         }
+        appendStat("total_recovered", last_week_recovered[0]);
         last_week_recovered = last_week_recovered.reverse();
 
-        for (i=0; i<7; i++) {
+        for (let i=0; i<7; i++) {
             let each_day_diff = last_week_recovered[i+1] - last_week_recovered[i];
             each_day_recovered.push(each_day_diff);
         }
+        appendStat("new_recovered", each_day_recovered[6]);
         last_week_recovered.shift();
 
         //Confirmed Cases Number Differences For Each Day
@@ -241,4 +245,8 @@ $(document).ready(function(){
             data: data_4
         });
     });
+
+    function appendStat(id, number) {
+        $("#"+id+">span").append(number);
+    }
 });

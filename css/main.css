@@ -18,8 +18,7 @@ canvas {
 .chart-container {
   float: left;
   position: relative;
-  /*margin: auto;*/
-  height: 40vh;
+  height: 35vh;
   width: 40vw;
   margin-top: 50px;
   margin-left: 5vw;
@@ -36,4 +35,52 @@ a {
   text-decoration: none;
   color: #aaa;
   font-weight: bold;
+}
+
+
+.stats {
+  min-height: 4vh;
+  display: flex;
+  background-color: rgba(255,97,136,0.1);
+  border: 1px solid rgba(255,97,136,0.6);
+}
+
+.period {
+  width: 40%;
+  padding: 5px;
+  margin: 10px;
+  display: inherit;
+}
+
+.period:last-child {
+  /*background-color: red;*/
+  justify-content: flex-end;
+}
+
+.middle {
+  width: 20%;
+  margin-top: 18px;
+  text-align: center;
+  color: #FCFCE3;
+}
+
+.item {
+  /*display: inline-table;*/
+  width: 20%;
+  padding: 5px;
+  margin: 3px;
+  background-color: darksalmon;
+  background-color: rgba(255,97,136,0.3);
+  border: 1px solid rgba(255,97,136,0.9);
+}
+
+.item:first-child {
+  font-size: 24px;
+  width: 25%;
+  color: #F5F5DC;
+  font-weight: bold;
+}
+
+.item {
+  color: #C8C8AF;
 }
