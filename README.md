@@ -28,7 +28,7 @@ Install http-server if you don't have
 npm install -g http-server
 ```
 
-Run server on 8080:
+Run server on 8000:
 
 ```bash
 http-server -a 0.0.0.0 -p 8000
