@@ -10,6 +10,14 @@ Since sharing COVID information has now stopped, the API has become useless.
 
 If project doesn't work, to see how the project looks with the old data, you can follow the steps below
 
+old data saved on `May 15, 2020`. This time is very beginning of the covid days.
+
+## How it looks like
+
+Data saved on Friday (Cuma). Thats the reason first bars are always Friday.
+
+![Covid.gif](sample/covid.gif)
+
 ## Running
 
 For handling CORS:
